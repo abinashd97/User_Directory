@@ -14,13 +14,13 @@ const getFavoritesFromStorage = () => {
 const usersSlice = createSlice({
   name: "users",
   initialState: {
-    list: [],
+    list: [], // User data array
     loading: false,
     error: null,
     page: 1,
     totalPages: 1,
     searchQuery: "",
-    favorites: getFavoritesFromStorage(),
+    favorites: getFavoritesFromStorage(), // Persist favorites
   },
   reducers: {
     setPage: (state, action) => {
@@ -52,7 +52,7 @@ const usersSlice = createSlice({
       })
       .addCase(fetchUsersAsync.fulfilled, (state, action) => {
         state.loading = false;
-        state.list = action.payload.data;
+        state.list = action.payload.data; // Store users fetched
         state.totalPages = action.payload.total_pages;
       })
       .addCase(fetchUsersAsync.rejected, (state, action) => {
@@ -62,6 +62,5 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setPage, setSearchQuery, toggleFavorite } =
-  usersSlice.actions;
+export const { setPage, setSearchQuery, toggleFavorite } = usersSlice.actions;
 export default usersSlice.reducer;

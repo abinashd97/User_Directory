@@ -5,7 +5,7 @@ import usersReducer from "../features/usersSlice.jsx";
 
 export const store = configureStore({
   reducer: {
-    theme: themeReducer,
-    users: usersReducer,
+    users: usersReducer, // Handles user-related state
+    theme: themeReducer, // Handles UI theme state
   },
 });

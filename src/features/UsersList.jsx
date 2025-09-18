@@ -22,11 +22,7 @@ function UsersList() {
   if (error) return <Error message={error} />;
 
   if (filteredList.length === 0 && searchQuery) {
-    return (
-      <div className="error">
-        No users found matching "{searchQuery}"
-      </div>
-    );
+    return <div className="error">No users found matching "{searchQuery}"</div>;
   }
 
   return (
@@ -37,23 +33,21 @@ function UsersList() {
             userId={user.id}
             isFavorite={(favorites || []).includes(user.id)}
           />
-          
+
           <div className="user-avatar">
             <div className="avatar-placeholder">
-              {user.name?.charAt(0) || 'U'}
+              {user.name?.charAt(0) || "U"}
             </div>
           </div>
-          
+
           <div className="user-info">
-            <div className="user-name">
-              {user.name}
-            </div>
+            <div className="user-name">{user.name}</div>
             <div className="user-email">{user.email}</div>
             <div className="user-username">@{user.username}</div>
           </div>
-          
+
           <div className="user-actions">
-            <button 
+            <button
               className="btn btn-primary"
               onClick={() => navigate(`/users/${user.id}`)}
             >
